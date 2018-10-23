@@ -29,7 +29,7 @@ int main(const int argc, const char**argv)
             }
             break;
         default:
-            cerr << "Usage: coxebbbe [script]\n";
+            cerr << "Usage: cloxebbbe [script]\n";
             return 64;
     }
     return 0;
