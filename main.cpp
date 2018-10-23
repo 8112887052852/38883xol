@@ -1,20 +1,44 @@
 #include<iostream>
 #include<string>
+#include<fstream>
+#include<streambuf>
+#include<sstream>
 
 using std::cout;
 using std::cerr;
 
-void runFile(const std::string& script)
+void run(const std::string&);
+void runFile(const std::string&);
+void runPrompt();
+
+void runFile(const std::string&path)
 {
-    (void)script;
+    std::ifstream file(path);
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    run(buffer.str());
 }
 
 void runPrompt()
 {
     ((void)0);
+    std::cout << "...And I cry...\n";
+
+    for(;;)
+    {
+        std::string line;
+        std::getline(std::cin, line);
+        run(line);
+    }
 }
 
-int main(const int argc, const char**argv)
+void run(const std::string&code)
+{
+    (void)code;
+    std::cout << "I run...\n";
+}
+
+int main(const int argc, const char * const * const argv)
 {
     switch(argc)
     {
